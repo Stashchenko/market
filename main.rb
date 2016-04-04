@@ -34,7 +34,7 @@ checkout.scan("FR")
 checkout.scan("SR")
 puts checkout.total
 
-puts 'My additional discount'
+puts '--My additional discount--'
 #Check for double rule discount, example for each beer you can get one free nuts 
 market.add_discount_rule(DoubleRule.new("BR", "NT"))
 checkout = market.create_checkout
@@ -46,6 +46,9 @@ checkout = market.create_checkout
 checkout.scan("BR")
 checkout.scan("NT")
 checkout.scan("NT")
+checkout.scan("NT")
 puts checkout.total
+#We can print detailed prices
+puts " -> Details: #{checkout.details_price}" 
 
 

@@ -1,5 +1,5 @@
 class PriceCalculator
-    attr_accessor :details_price
+    attr_accessor :details_prices
     
     def initialize(market)
         @market = market
@@ -13,8 +13,11 @@ class PriceCalculator
         end  
         apply_rules!(@default_prices)
         sum = 0.00
+        @details_prices = @default_prices
         @default_prices.values.flatten.inject(0, :+).round(2)
     end
+    
+
 
     private
     

@@ -9,12 +9,12 @@ class MoreThanRule
     end
     
     def can_apply?(items)
-        items.count(@item_name) >= @items_count
+        return false if items[@item_name] == nil
+        items[@item_name].count >= @items_count
     end
     
-    def price(market, items)
-        count = items.count(@item_name)
-        @price * count
+    def modify_price!(items)
+        items[@item_name].map! {|old_price| old_price=@price}
     end 
     
     

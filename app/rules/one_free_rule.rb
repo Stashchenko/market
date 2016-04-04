@@ -7,14 +7,23 @@ class OneFreeRule
     end
     
     def can_apply?(items)
-        items.count(@item_name) > 1 
+        return false if items[@item_name] == nil
+        items[@item_name].count > 1 
     end
     
-    def price(market, items)
-        count = items.count(@item_name)
-        multiplayer =(count / 2.0).round
-        multiplayer * market.products[@item_name].price 
-    end  
+    def modify_price!(items)
+        count = items[@item_name].count
+        items[@item_name].each_with_index do |price, index|
+            items[@item_name][index]= 0.00 if double_item?(index)
+        end
+    end
+    
+    private 
+    
+    def double_item?(index)
+        ((index + 1) % 2)  == 0
+    end    
+   
   
     
 end    

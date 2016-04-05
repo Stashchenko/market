@@ -2,12 +2,14 @@ class Checkout
     attr_accessor :items, :total_price
     
     def initialize(market)
+        @market = market
         @calculator = PriceCalculator.new(market)
+        @items = {}
     end
     
     def scan(item)
-        @items ||= []
-        @items << item
+        @items[item] ||= []
+        @items[item] << @market.products[item].clone
     end
     
     def total
@@ -16,7 +18,7 @@ class Checkout
     
     def price
         # Saving total price for future in details_price method
-        @total_price ||= @calculator.total(@items)
+        @total_price = @calculator.total(@items)
     end
     
     def details_price

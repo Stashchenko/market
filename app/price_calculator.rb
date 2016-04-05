@@ -12,18 +12,16 @@ class PriceCalculator
         @details_prices.values.flatten.each { |item| sum += item.price }  
         sum.round(2)
     end
-    
-
 
     private
     
+    # result exmpl. {'FR' : [Item, Item..], 'SR': [Item]...}
     def initial_prices(items)
         result = {} 
         items.each do |item|
             result[item] ||= []
             result[item] << @market.products[item].clone
         end
-        # result exmpl. {'FR' : [Item, Item..], 'SR': [Item]...}
         result
     end
     

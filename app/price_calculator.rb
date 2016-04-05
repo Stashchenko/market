@@ -8,7 +8,9 @@ class PriceCalculator
     def total(items)
         @details_prices = initial_prices(items)
         apply_rules!(@details_prices)
-        @details_prices.values.flatten.map(&:price).inject(0, :+).round(2)
+        sum = 0.0
+        @details_prices.values.flatten.each { |item| sum += item.price }  
+        sum.round(2)
     end
     
 
@@ -21,6 +23,7 @@ class PriceCalculator
             result[item] ||= []
             result[item] << @market.products[item].clone
         end
+        # result exmpl. {'FR' : [Item, Item..], 'SR': [Item]...}
         result
     end
     

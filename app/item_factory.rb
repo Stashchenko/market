@@ -11,7 +11,8 @@ class ItemFactory
     end
     
     def build(item_name)
-       return @items[item_name] if @items.has_key?(item_name)
+        raise 'Cant build sush product' unless @items.has_key?(item_name)
+        @items[item_name]
     end
     
     

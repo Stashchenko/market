@@ -6,20 +6,23 @@ class PriceCalculator
     end    
     
     def total(items)
-        @default_prices = {}
-        items.each do |item|
-            @default_prices[item] ||= []
-            @default_prices[item] << @market.products[item].price
-        end  
-        apply_rules!(@default_prices)
-        sum = 0.00
-        @details_prices = @default_prices
-        @default_prices.values.flatten.inject(0, :+).round(2)
+        @details_prices = initial_prices(items)
+        apply_rules!(@details_prices)
+        @details_prices.values.flatten.map(&:price).inject(0, :+).round(2)
     end
     
 
 
     private
+    
+    def initial_prices(items)
+        result = {} 
+        items.each do |item|
+            result[item] ||= []
+            result[item] << @market.products[item].clone
+        end
+        result
+    end
     
     def apply_rules!(default_prices)
         @market.discount_rules.each do |rule|

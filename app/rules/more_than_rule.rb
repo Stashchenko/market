@@ -14,7 +14,10 @@ class MoreThanRule
     end
     
     def modify_price!(items)
-        items[@item_name].map! {|old_price| old_price=@price}
+        items[@item_name].each do |item| 
+             item.price = @price
+             item.add_discount_rules(self.class)
+        end
     end 
     
     

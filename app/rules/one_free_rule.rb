@@ -12,9 +12,11 @@ class OneFreeRule
     end
     
     def modify_price!(items)
-        count = items[@item_name].count
         items[@item_name].each_with_index do |price, index|
-            items[@item_name][index]= 0.00 if double_item?(index)
+            if double_item?(index)
+                items[@item_name][index].price = 0.00
+                items[@item_name][index].add_discount_rules(self.class)
+            end
         end
     end
     

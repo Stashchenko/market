@@ -33,6 +33,7 @@ checkout.scan("SR")
 checkout.scan("FR")
 checkout.scan("SR")
 puts checkout.total
+puts " -> Details: #{checkout.details_price}" 
 
 puts '--My additional discount--'
 #Check for double rule discount, example for each beer you can get one free nuts 

@@ -10,6 +10,7 @@ class Checkout
         @items << item
     end
     
+    
     def total
         "Items: #{@items}  Total: $#{price}"
     end
@@ -21,7 +22,7 @@ class Checkout
     
     def details_price
         @total_price ||= @calculator.total(@items)
-        @calculator.details_prices
+        @calculator.details_prices.to_s
     end
     
 end

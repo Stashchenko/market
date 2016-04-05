@@ -10,7 +10,6 @@ class Checkout
         @items << item
     end
     
-    
     def total
         "Items: #{@items}  Total: $#{price}"
     end

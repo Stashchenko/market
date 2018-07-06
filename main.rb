@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-Dir['app/**/*.rb'].each { |file| load file }
+Dir[File.join(File.expand_path(Dir.pwd), 'app/**/', '*.rb')].each {|file| require_relative file}
 
 puts 'Welcome to SMART Store)))'
 factory = ItemFactory.new

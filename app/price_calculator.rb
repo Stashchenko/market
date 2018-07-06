@@ -10,12 +10,12 @@ class PriceCalculator
   def total(items)
     @details_prices = items
     apply_rules!(@details_prices)
-    sum(@details_prices)
+    sum
   end
 
   private
 
-  def sum(_items)
+  def sum
     sum = 0.0
     @details_prices.values.flatten.each { |item| sum += item.price }
     sum.round(2)

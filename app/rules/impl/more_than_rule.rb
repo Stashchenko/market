@@ -1,5 +1,7 @@
 # frozen_string_literal: true
 
+# Apply one price for all same products
+# For example if you buy more than 5 keyboards each price set 9.99 not old (10.55)
 class MoreThanRule < BaseRule
   attr_accessor :items_count, :price
 

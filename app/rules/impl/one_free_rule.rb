@@ -1,5 +1,6 @@
 # frozen_string_literal: true
 
+# One product in pair costs = 0
 class OneFreeRule < BaseRule
   def can_apply?(items)
     return false if items[@item_name].nil?
@@ -7,7 +8,7 @@ class OneFreeRule < BaseRule
   end
 
   def modify_price!(items)
-    items[@item_name].each_with_index do |_price, index|
+    items[@item_name].each_with_index do |_item, index|
       if double_item?(index)
         items[@item_name][index].price = 0.00
         items[@item_name][index].add_discount_rules(self.class)

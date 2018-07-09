@@ -14,3 +14,8 @@
 
 Run:
  `ruby main.rb`
+ 
+ 
+#TODO
+* Split Rules on two classes with `can_apply?` and `modify_price!` in order to create more flexible rules 
+ 

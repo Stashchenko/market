@@ -1,39 +1,29 @@
 # frozen_string_literal: true
 
-Dir[File.join(File.expand_path(Dir.pwd), 'app/**/', '*.rb')].each {|file| require_relative file}
+Dir[File.join(File.expand_path(Dir.pwd), 'app/**/', '*.rb')].each { |file| require_relative file }
 
 puts 'Welcome to SMART Store)))'
 factory = ItemFactory.new
 market = Market.new
-market.add_item(factory.build('FR'))
-market.add_item(factory.build('SR'))
-market.add_item(factory.build('CF'))
-market.add_item(factory.build('AJ'))
-market.add_item(factory.build('BR'))
-market.add_item(factory.build('NT'))
 
+factory.build('FR')
+# add discounts
 market.add_discount_rule(OneFreeRule.new('FR'))
 market.add_discount_rule(MoreThanRule.new('SR', 3, 4.50))
 
 checkout = market.create_checkout
+fruit_tea = factory.build('FR')
+checkout.scan(factory.build('SR'))
+checkout.scan(factory.build('CF'))
 
-checkout.scan('FR')
-checkout.scan('SR')
-checkout.scan('FR')
-checkout.scan('FR')
-checkout.scan('CF')
 puts checkout.total
+puts " -> Details: #{checkout.details_price}"
 
+barry = factory.build('SR')
 checkout = market.create_checkout
-checkout.scan('FR')
-checkout.scan('FR')
-puts checkout.total
+checkout.scan(fruit_tea)
+3.times { checkout.scan(barry.clone) }
 
-checkout = market.create_checkout
-checkout.scan('SR')
-checkout.scan('SR')
-checkout.scan('FR')
-checkout.scan('SR')
 puts checkout.total
 puts " -> Details: #{checkout.details_price}"
 
@@ -42,15 +32,17 @@ puts '--My additional discount--'
 # for each beer you can get one free nuts
 market.add_discount_rule(DoubleRule.new('BR', 'NT'))
 checkout = market.create_checkout
-checkout.scan('BR')
-checkout.scan('NT')
+checkout.scan(factory.build('BR'))
+checkout.scan(factory.build('NT'))
 puts checkout.total
 
+puts '--При покупке мыши и клавиатуры - 3%--'
+# Check for double rule discount, example
+# for each beer you can get one free nuts
+market.add_discount_rule(DiscountForPairRule.new('MS', 'KB', 3))
 checkout = market.create_checkout
-checkout.scan('BR')
-checkout.scan('NT')
-checkout.scan('NT')
-checkout.scan('NT')
+checkout.scan(factory.build('MS'))
+checkout.scan(factory.build('KB'))
 puts checkout.total
 # We can print detailed prices
 puts " -> Details: #{checkout.details_price}"

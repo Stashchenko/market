@@ -10,8 +10,8 @@ class Checkout
   end
 
   def scan(item)
-    @items[item] ||= []
-    @items[item] << @market.products[item].clone
+    @items[item.id] ||= []
+    @items[item.id] << item
   end
 
   def total

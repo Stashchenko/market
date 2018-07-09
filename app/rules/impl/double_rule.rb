@@ -15,10 +15,10 @@ class DoubleRule < BaseRule
 
   def modify_price!(items)
     total_first_product = items[@first_item].count
-    items[@second_item].each_with_index do |_price, index|
+    items[@second_item].each_with_index do |item, index|
       break if index >= total_first_product
-      items[@second_item][index].price = 0.00
-      items[@second_item][index].add_discount_rules(self.class)
+      item.price = 0.00
+      item.add_discount_rules(self.class)
     end
   end
 end

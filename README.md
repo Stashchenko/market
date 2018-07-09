@@ -13,9 +13,13 @@
 * Написать тесты для бизнес логики
 
 Run:
- `ruby main.rb`
+ * Result `ruby main.rb`
+ * Tests `rspec`
  
  
 #TODO
-* Split Rules on two classes with `can_apply?` and `modify_price!` in order to create more flexible rules 
+* Split Rules on two classes with `can_apply?` and `modify_price!` in order to create more flexible rules
+* Add order to rules
+* Ability to check other rules if some already applied to products
+
  

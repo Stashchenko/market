@@ -25,6 +25,6 @@ class Checkout
 
   def details_price
     @total_price ||= @calculator.total(@items)
-    @calculator.details_prices.to_s
+    @calculator.details_prices
   end
 end

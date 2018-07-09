@@ -1,13 +1,12 @@
 # frozen_string_literal: true
 
-class CountColoredRule < BaseRule
-  attr_accessor :count, :color, :percentage
+class CountColoredRule < BasePercentageRule
+  attr_accessor :count, :color
 
   def initialize(item_name, count, color, percentage)
     @count = count
     @color = color
-    @percentage = percentage
-    super(item_name)
+    super(item_name, percentage)
   end
 
   def can_apply?(items)

@@ -13,6 +13,7 @@ RSpec.describe 'Check for DoubleRule' do
     checkout.scan(factory.build('BR'))
     checkout.scan(factory.build('NT'))
     expect(checkout.price).to eq(5.9)
+    expect(checkout.details_price['NT'].first.discount_rules.first).to eq(DoubleRule)
   end
 
   it 'check discount 1 Bear and many nuts items in checkout' do

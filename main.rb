@@ -44,5 +44,14 @@ checkout = market.create_checkout
 checkout.scan(factory.build('MS'))
 checkout.scan(factory.build('KB'))
 puts checkout.total
-# We can print detailed prices
+puts " -> Details: #{checkout.details_price}"
+
+puts 'При покупке товаров в категории "Еда" после 6ти вечера - 5%'
+time = Time.new(Time.now.year, Time.now.month, Time.now.day, Time.now.hour - 1, 0o0)
+market.add_discount_rule(CategoryTimeRule.new(:food, time, 5))
+checkout = market.create_checkout
+nuts = factory.build('AJ')
+nuts.category = :food
+2.times { checkout.scan(nuts.clone) }
+puts checkout.total
 puts " -> Details: #{checkout.details_price}"

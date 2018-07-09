@@ -14,10 +14,4 @@ class BaseRule
   def modify_price!(_items)
     raise 'Should be implement'
   end
-
-  protected
-
-  def percentage_price(price, percentage)
-    price - (price * percentage / 100)
-  end
 end

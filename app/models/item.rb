@@ -13,8 +13,7 @@ class Item
   end
 
   def add_discount_rules(rule_name)
-    @discount_rules ||= []
-    @discount_rules << rule_name
+    (@discount_rules ||= []) << rule_name
   end
 
   def inspect

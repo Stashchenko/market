@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 class Checkout
-  attr_accessor :items, :total_price
+  attr_reader :items, :total_price
 
   def initialize(market)
     @market = market
@@ -10,8 +10,7 @@ class Checkout
   end
 
   def scan(item)
-    @items[item.id] ||= []
-    @items[item.id] << item
+    (@items[item.id] ||= []) << item
   end
 
   def total

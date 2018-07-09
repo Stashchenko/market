@@ -10,11 +10,11 @@ class DiscountForPairRule < BasePercentageRule
   end
 
   def can_apply?(items)
-    !items[@first_item].nil? && !item_name[@second_item].nil?
+    !items[first_item].nil? && !item_name[second_item].nil?
   end
 
   def modify_price!(items)
-    total_first_product = items[@first_item].count
+    total_first_product = items[first_item].count
     items.values.flatten.each_with_index do |item, index|
       break if index >= total_first_product
       item.price = percentage_price(item.price, percentage)

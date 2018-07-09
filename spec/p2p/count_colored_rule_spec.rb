@@ -9,13 +9,7 @@ RSpec.describe 'Check for CountColoredRule' do
   end
 
   it 'should apply for 10 items in checkout the same white color' do
-    checkout = market.create_checkout
-    mouse = factory.build('MS')
-    mouse.color = :white
-    10.times do
-      checkout.scan(mouse.clone)
-    end
-    expect(checkout.price).to eq(49.5)
+    expect(create_colored(:white).price).to eq(49.5)
   end
 
   it 'should not apply for 10 items in random color' do
@@ -29,12 +23,18 @@ RSpec.describe 'Check for CountColoredRule' do
   end
 
   it 'should not apply for 10 items in blue color' do
+    expect(create_colored(:blue).price).to eq(50.0)
+  end
+
+  private
+
+  def create_colored(color)
     checkout = market.create_checkout
     mouse = factory.build('MS')
-    mouse.color = :blue
+    mouse.color = color
     10.times do
       checkout.scan(mouse.clone)
     end
-    expect(checkout.price).to eq(50.0)
+    checkout
   end
 end

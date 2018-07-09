@@ -7,4 +7,5 @@ ruby '2.4.1'
 
 gem 'rspec'
 gem 'rubocop', require: false
+gem 'rubycritic', require: false
 gem 'simplecov', require: false, group: :test

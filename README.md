@@ -18,8 +18,10 @@ Run:
  
  
 #TODO
+* Add "FactoryBot" gem
+* Add more unit tests
+* Ability to check rules if some already applied to products
 * Split Rules on two classes with `can_apply?` and `modify_price!` in order to create more flexible rules
 * Add order to rules
-* Ability to check other rules if some already applied to products
 
  

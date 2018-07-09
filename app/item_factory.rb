@@ -1,5 +1,6 @@
 # frozen_string_literal: true
 
+# The ItemFactory class is responsible for creating products
 class ItemFactory
   def initialize
     @items = {}

@@ -10,18 +10,13 @@ RSpec.describe 'Check for OneFreeRule' do
 
   it '2 items in checkout' do
     checkout = market.create_checkout
-    checkout.scan(factory.build('FR'))
-    checkout.scan(factory.build('FR'))
+    2.times { checkout.scan(factory.build('FR')).clone }
     expect(checkout.price).to eq(3.11)
   end
 
   it 'check discount 5 items in checkout/ 3 payed - 2 free' do
     checkout = market.create_checkout
-    checkout.scan(factory.build('FR'))
-    checkout.scan(factory.build('FR'))
-    checkout.scan(factory.build('FR'))
-    checkout.scan(factory.build('FR'))
-    checkout.scan(factory.build('FR'))
+    5.times { checkout.scan(factory.build('FR')).clone }
     expect(checkout.price).to eq(9.33)
   end
 end

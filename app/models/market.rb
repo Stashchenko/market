@@ -4,8 +4,7 @@ class Market
   attr_accessor :products
 
   def add_discount_rule(rule)
-    @discount_rules ||= {}
-    @discount_rules[rule.item_name] = rule
+    (@discount_rules ||= {})[rule.item_name] = rule
   end
 
   def discount_rules

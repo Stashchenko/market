@@ -10,8 +10,8 @@ class CountColoredRule < BasePercentageRule
   end
 
   def can_apply?(items)
-    count_colored = items.values.flatten.count { |k| k.color == @color }
-    count_colored >= @count
+    count_colored = items.values.flatten.count { |k| k.color == color }
+    count_colored >= count
   end
 
   def modify_price!(items)

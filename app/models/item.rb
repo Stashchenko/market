@@ -1,8 +1,8 @@
 # frozen_string_literal: true
 
 class Item
-  attr_accessor :id, :name, :price, :color,
-                :discount_rules, :category
+  attr_reader :id, :name, :discount_rules
+  attr_accessor :price, :color, :category
 
   def initialize(id, name, price)
     @id = id

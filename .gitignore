@@ -30,3 +30,5 @@ coverage/
 # ignore rdoc generated documentation files
 doc/
 /.project
+rubocop-result.json
+.scannerwork/

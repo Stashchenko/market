@@ -19,6 +19,7 @@
      
  
 # TODO
+* Remove dublicates vars in specs
 * Add "FactoryBot" gem
 * Add more unit tests
 * Ability to check rules if some already applied to products

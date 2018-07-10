@@ -24,4 +24,21 @@ Run:
 * Split Rules on two classes with `can_apply?` and `modify_price!` in order to create more flexible rules
 * Add order to rules
 
+
+#SonarQube
+    brew install sonarqube
+##Download Ruby plugin from 
+    Following all instruction here:
+    https://github.com/fortitudetec/sonar-ruby-plugin
+##Run sonar: 
+    sonar console 
+    #OR async
+    brew services start sonarqube
+##Add sonar-scanner to PATH
+    #In my case:
+    PATH=/Users/user/workspace/sonar-scanner-3.2.0.1227-macosx/bin:"$PATH"
+![Screenshot](public/ScreenShot1.png)
+![Screenshot](public/ScreenShot2.png)
+![Screenshot](public/ScreenShot3.png)    
+    
  

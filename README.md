@@ -41,5 +41,9 @@
 ![Screenshot](public/ScreenShot1.png)
 ![Screenshot](public/ScreenShot2.png)
 ![Screenshot](public/ScreenShot3.png)    
+   
+# RubyCritics
+![Screenshot](public/ScreenShot4.png)
+![Screenshot](public/ScreenShot5.png)          
     
  

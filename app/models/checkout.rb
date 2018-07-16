@@ -3,18 +3,13 @@
 class Checkout
   attr_reader :items, :total_price
 
-  def initialize(market)
-    @market = market
-    @calculator = PriceCalculator.new(market)
+  def initialize(calculator)
+    @calculator = calculator
     @items = {}
   end
 
   def scan(item)
     (@items[item.id] ||= []) << item
-  end
-
-  def total
-    "Items: #{@items}  Total: $#{price}"
   end
 
   def price

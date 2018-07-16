@@ -12,12 +12,7 @@ class Market
   end
 
   def create_checkout
-    Checkout.new(self)
-  end
-
-  def apply_rules!(items)
-    discount_rules.each do |rule|
-      rule.modify_price!(items) if rule.can_apply?(items)
-    end
+    calc = PriceCalculator.new(discount_rules)
+    Checkout.new(calc)
   end
 end
